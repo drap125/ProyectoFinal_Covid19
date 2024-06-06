@@ -1,0 +1,5 @@
+digraph G {
+     node [shape = circle, style = filled, fillcolor = "#EEEEE", color = "#EEEEE", width = 0.5, height = 0.5];
+     edge [color = "#31CEF0"];
+
+}
