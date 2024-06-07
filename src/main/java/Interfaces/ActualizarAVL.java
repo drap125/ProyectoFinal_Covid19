@@ -5,6 +5,7 @@
 package Interfaces;
 
 import Clases.ArbolAVL;
+import javax.swing.JOptionPane;
 
 
 
@@ -215,10 +216,10 @@ public class ActualizarAVL extends javax.swing.JFrame {
         this.setVisible(false);
         menu.setVisible(true);
     }//GEN-LAST:event_btnAtrasActionPerformed
-
+//se modfico para poder validar si los txtfield no estaban vacios o por si no habia una excepcion
     private void btnAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarActionPerformed
         MenuPrincipal menu = new MenuPrincipal();
-
+        
         String depart = txtDepartamento.getText();
         String municipio = txtMunicipio.getText();
         String cantDosis = txtCantDosis.getText();
@@ -226,7 +227,11 @@ public class ActualizarAVL extends javax.swing.JFrame {
         String FsegundaVac = txtSegundaVacuna.getText();
         String FtercerVac = txtTerceraVacuna.getText();
         String lugarVac = txtLugarVac.getText();
-
+        
+        if (depart.isEmpty() || municipio.isEmpty() || cantDosis.isEmpty() || FprimerVac.isEmpty() || FsegundaVac.isEmpty() || FtercerVac.isEmpty() || lugarVac.isEmpty()) {
+        JOptionPane.showMessageDialog(null, "Ingrese todos los datos porfavor", "Error", JOptionPane.ERROR_MESSAGE);
+        }else {
+        try {
         arbolitoAVL.modificar(depart, municipio, cantDosis, FprimerVac, FsegundaVac, FtercerVac, lugarVac);
         
         txtDepartamento.setText("");
@@ -236,6 +241,11 @@ public class ActualizarAVL extends javax.swing.JFrame {
         txtSegundaVacuna.setText("");
         txtTerceraVacuna.setText("");
         txtLugarVac.setText("");
+       } catch (NumberFormatException e) {
+           
+            JOptionPane.showMessageDialog(null, "Ingrese un número válido para la cantidad de dosis", "Error", JOptionPane.ERROR_MESSAGE);
+        }
+    }
     }//GEN-LAST:event_btnAgregarActionPerformed
 
     private void txtLugarVacActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtLugarVacActionPerformed

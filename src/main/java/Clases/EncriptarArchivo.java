@@ -121,18 +121,18 @@ public class EncriptarArchivo {
     
     
     
-    
+    //metodo de encriptacion de cifrado simple es una variacion del metodo cesar
   public static String encrip(String texto) {
     StringBuilder resultado = new StringBuilder();
 
     for (int i = 0; i < texto.length(); i++) {
         char caracter = texto.charAt(i);
-        // Si el caracter es una letra, lo encriptamos
+        // Si el caracter es una letra. lo encriptamos
         if (Character.isLetter(caracter)) {
-            // Si es una letra mayúscula, aplicamos el desplazamiento
+            // Si es una letra mayúscula. aplicamos el desplazamiento
             if (Character.isUpperCase(caracter)) {
                 caracter = (char) ((caracter - 'A' + 4) % 26 + 'A');
-            } else { // Si es una letra minúscula
+            } else { // Si es una letra. minúscula
                 caracter = (char) ((caracter - 'a' + 4) % 26 + 'a');
             }
         } else if (Character.isDigit(caracter)) { // Si el caracter es un número, lo encriptamos

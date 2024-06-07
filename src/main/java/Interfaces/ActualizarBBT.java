@@ -6,6 +6,7 @@ package Interfaces;
 
 import Clases.ArbolBinario;
 import Clases.EncriptarArchivo;
+import javax.swing.JOptionPane;
 
 
 
@@ -218,6 +219,7 @@ public class ActualizarBBT extends javax.swing.JFrame {
         menu.setVisible(true);
     }//GEN-LAST:event_jButton1ActionPerformed
 
+    //se modfico para poder validar si los txtfield no estaban vacios o por si no habia una excepcion
     private void btnAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarActionPerformed
         MenuPrincipal menu = new MenuPrincipal();
         
@@ -229,6 +231,10 @@ public class ActualizarBBT extends javax.swing.JFrame {
         String FtercerVac = txtTerceraVacuna.getText();
         String lugarVac = txtLugarVac.getText();
         
+        if (depart.isEmpty() || municipio.isEmpty() || cantDosis.isEmpty() || FprimerVac.isEmpty() || FsegundaVac.isEmpty() || FtercerVac.isEmpty() || lugarVac.isEmpty()) {
+        JOptionPane.showMessageDialog(null, "Ingrese todos los datos antes", "Error", JOptionPane.ERROR_MESSAGE);
+        } else {
+        try {
         arbolito.modificar(depart, municipio, cantDosis, FprimerVac, FsegundaVac, FtercerVac, lugarVac);
         
         txtDepartamento.setText("");
@@ -238,6 +244,10 @@ public class ActualizarBBT extends javax.swing.JFrame {
         txtSegundaVacuna.setText("");
         txtTerceraVacuna.setText("");
         txtLugarVac.setText("");
+        } catch (NumberFormatException e) {
+        JOptionPane.showMessageDialog(null, "Ingrese todos los datos antes", "Error", JOptionPane.ERROR_MESSAGE);
+        }
+        }
     }//GEN-LAST:event_btnAgregarActionPerformed
 
     
